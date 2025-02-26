@@ -95,6 +95,11 @@ export default async function Home() {
 
       <Section>
         <ContentBox>
+          <h1
+            dangerouslySetInnerHTML={{
+              __html: page.title,
+            }}
+          />
           <div
             className="content"
             dangerouslySetInnerHTML={{
