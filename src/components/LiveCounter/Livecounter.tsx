@@ -17,7 +17,7 @@ const Livecounter = () => {
         target={'_blank'}
       >
         <Image
-          id={'licnt2E59'}
+          id={'licnt12EA'}
           priority
           src={'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7'}
           className={styles.logo__image}
@@ -29,7 +29,7 @@ const Livecounter = () => {
       <script
         dangerouslySetInnerHTML={{
           __html: `
-              (function(d,s){d.getElementById("licnt2E59").src="https://counter.yadro.ru/hit?t44.12;r"+escape(d.referrer)+((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+(s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)
+              (function(d,s){d.getElementById("licnt12EA").src="https://counter.yadro.ru/hit?t44.18;r"+escape(d.referrer)+((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+(s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)
             `,
         }}
       />

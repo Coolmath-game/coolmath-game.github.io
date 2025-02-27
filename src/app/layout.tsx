@@ -24,8 +24,8 @@ const settings = await getSiteoptions();
 const {sidePosts} = await getSidePosts();
 
 export const metadata: Metadata = {
-  title: "Thats not my neighbor",
-  description: "Thats not my neighbor",
+  title: "Cool Math Games - Play Cool Math Games Unblocked Online",
+  description: "",
   verification: {
     google: "zVS51G9qsrXjF_p5P-xZD1xC1HtpsPypwR0o1pqtXkU",
   },
@@ -42,7 +42,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-    <GoogleTagManager gtmId="G-KMEPNP0KS0"/>
+    <GoogleTagManager gtmId="G-FTK0CTL5QX"/>
     <body>
     <NavbarProvider>
       <ApolloWrapper>
