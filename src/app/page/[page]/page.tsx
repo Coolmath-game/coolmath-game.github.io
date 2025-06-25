@@ -8,17 +8,25 @@ import {unstable_noStore} from "next/cache";
 import {Metadata} from "next";
 import appConfig from "@/utils/lib/config";
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { page: string } }): Promise<Metadata> {
   const page = await getPageByUri('homepage');
+  const currentPage = parseInt(params.page);
+
+  const metadata: Metadata = {};
 
   if (page && page.seo) {
-    return {
-      title: page.seo.title,
-      description: page.seo.description,
+    metadata.title = page.seo.title;
+    metadata.description = page.seo.description;
+  }
+
+  // Add canonical URL only for pages > 1 to point back to the main page
+  if (currentPage > 1) {
+    metadata.alternates = {
+      canonical: '/', // Points to the main page without pagination
     };
   }
 
-  return {};
+  return metadata;
 }
 
 export default async function HomeGames({params}: { params: { page: number } }) {
@@ -60,17 +68,6 @@ export default async function HomeGames({params}: { params: { page: number } }) 
             basePath=''
           />
         )}
-      </Section>
-
-      <Section>
-        <ContentBox>
-          <div
-            className="content"
-            dangerouslySetInnerHTML={{
-              __html: page.content,
-            }}
-          />
-        </ContentBox>
       </Section>
     </div>
   );

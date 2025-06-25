@@ -4,17 +4,25 @@ import {getPagesCount, getPaginatedPostsByCategoryId, getPostsByCategoryId} from
 import TemplateArchive from '@/templates/TemplateArchive';
 import {Metadata} from "next";
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug: string, page: string } }): Promise<Metadata> {
   const {category} = await getCategoryBySlug(params.slug);
+  const currentPage = parseInt(params.page);
+
+  const metadata: Metadata = {};
 
   if (category && category.seo) {
-    return {
-      title: category.seo.title,
-      description: category.seo.description,
+    metadata.title = category.seo.title;
+    metadata.description = category.seo.description;
+  }
+
+  // Add canonical URL only for pages > 1 to point back to the main category page
+  if (currentPage > 1) {
+    metadata.alternates = {
+      canonical: `/c/${params.slug}`, // Points to the main category page without pagination
     };
   }
 
-  return {};
+  return metadata;
 }
 
 export default async function CategoryPage({params}: { params: { slug: string, page: string } }) {
