@@ -81,7 +81,7 @@ export default async function HomeGames({params}: { params: { page: number } }) 
             />
           </ContentBox>
         </Section>
-      }
+      )}
     </div>
   );
 }
