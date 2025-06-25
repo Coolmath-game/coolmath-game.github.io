@@ -8,7 +8,7 @@ import {unstable_noStore} from "next/cache";
 import {Metadata} from "next";
 import appConfig from "@/utils/lib/config";
 
-export async function generateMetadata({ params }: { params: { page: string } }): Promise<Metadata> {
+export async function generateMetadata({params}: { params: { page: string } }): Promise<Metadata> {
   const page = await getPageByUri('homepage');
   const currentPage = parseInt(params.page);
 
@@ -69,6 +69,19 @@ export default async function HomeGames({params}: { params: { page: number } }) 
           />
         )}
       </Section>
+
+      {!(pagination.currentPage > 1) && (
+        <Section>
+          <ContentBox>
+            <div
+              className="content"
+              dangerouslySetInnerHTML={{
+                __html: page.content,
+              }}
+            />
+          </ContentBox>
+        </Section>
+      }
     </div>
   );
 }
@@ -78,7 +91,7 @@ export async function generateStaticParams() {
   const pagesCount = await getPagesCount(posts, 10);
 
   const paths = [...new Array(pagesCount)].map((_, i) => {
-    return { page: String(i + 1) };
+    return {page: String(i + 1)};
   });
 
   return paths;
