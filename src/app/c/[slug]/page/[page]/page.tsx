@@ -13,12 +13,8 @@ export async function generateMetadata({ params }: { params: { slug: string, pag
   if (category && category.seo) {
     metadata.title = category.seo.title;
     metadata.description = category.seo.description;
-  }
-
-  // Add canonical URL only for pages > 1 to point back to the main category page
-  if (currentPage > 1) {
     metadata.alternates = {
-      canonical: `/c/${params.slug}`, // Points to the main category page without pagination
+      canonical: `/c/${params.slug}`, // Add canonical.
     };
   }
 
